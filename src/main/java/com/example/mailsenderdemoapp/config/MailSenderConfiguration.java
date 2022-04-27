@@ -23,11 +23,12 @@ public class MailSenderConfiguration {
         mailSender.setUsername(mailProperties.getUsername());
         mailSender.setPassword(mailProperties.getPassword());
 
-        Properties properties = mailSender.getJavaMailProperties();
-        properties.put("mail.smtp.auth", mailProperties.getSmtpAuth());
-        properties.put("mail.transport.protocol", mailProperties.getTransportProtocol());
-        properties.put("mail.smtp.starttls.enable", mailProperties.getEnableSmtpStartTls());
-        properties.put("mail.smtp.ssl.trust", mailProperties.getSmtpSslTrust());
+        Properties javaMailProperties = mailSender.getJavaMailProperties();
+        javaMailProperties.put("mail.smtp.auth", mailProperties.getSmtpAuth());
+        javaMailProperties.put("mail.transport.protocol", mailProperties.getTransportProtocol());
+        javaMailProperties.put("mail.smtp.starttls.enable", mailProperties.getEnableSmtpStartTls());
+        javaMailProperties.put("mail.smtp.ssl.trust", mailProperties.getSmtpSslTrust());
+        javaMailProperties.put("mail.debug", "true");
 
         return mailSender;
     }
